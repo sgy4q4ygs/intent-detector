@@ -17,7 +17,6 @@ param storageConnectionString string
 @description('The runtime stack for the Azure Function.')
 param runtime string = 'dotnet'
 
-// Function App Resource
 resource functionApp 'Microsoft.Web/sites@2022-03-01' = {
   name: functionAppName
   location: location
