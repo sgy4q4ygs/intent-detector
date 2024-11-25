@@ -1,24 +1,16 @@
-@description('The name of the Function App.')
-param functionAppName string = 'intent-detector'
+param project string = 'intent-system-00'
+param appServicePlanName string = '${project}-service-plan'
+param identityName string = '${project}-indentity'
 
-@description('The name of the existing App Service Plan.')
-param appServicePlanName string = 'intent-system-00-service-plan'
+param functionAppName string
 
-@description('The Azure region where the Function App will be created.')
 param location string = resourceGroup().location
 
-@description('The User-Assigned Managed Identity Principal ID.')
-param identityName string
-
-@description('The Azure Storage Account connection string.')
+param runtime string = 'dotnet'
 @secure()
 param storageConnectionString string
 
-@description('The runtime stack for the Azure Function.')
-param runtime string = 'dotnet'
-
-// Function App Resource
-resource functionApp 'Microsoft.Web/sites@2022-03-01' = {
+resource functionApp 'Microsoft.Web/sites@2024-04-01' = {
   name: functionAppName
   location: location
   identity: {
